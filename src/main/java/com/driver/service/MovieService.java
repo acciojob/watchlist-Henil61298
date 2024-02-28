@@ -1,8 +1,8 @@
 package com.driver.service;
 
-import com.driver.model.Director;
+import com.driver.Director;
 import com.driver.model.DirectorMoviePair;
-import com.driver.model.Movie;
+import com.driver.Movie;
 import com.driver.repository.MovieRepository;
 import org.springframework.stereotype.Service;
 

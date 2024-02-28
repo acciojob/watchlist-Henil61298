@@ -1,16 +1,12 @@
 package com.driver.controller;
 
-import com.driver.model.Director;
+import com.driver.Director;
 import com.driver.model.DirectorMoviePair;
-import com.driver.model.Movie;
+import com.driver.Movie;
 import com.driver.service.MovieService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.client.HttpClientErrorException;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/movies")
