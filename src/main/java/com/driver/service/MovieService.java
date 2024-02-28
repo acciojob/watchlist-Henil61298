@@ -28,7 +28,7 @@ public class MovieService {
 
     public String addMovie(Movie m){
         if (!movieList.contains(m)){
-            movieList.add(movie);
+            movieList.add(m);
         }
 
         return "Movie Added";
@@ -47,14 +47,15 @@ public class MovieService {
     }
 
     public Movie getMovie(String name){
-        Movie mov = new Movie();
+//        Movie mov = new Movie();
         for (Movie m : movieList){
             if (m.getMovieName().equals(name)){
-                mov = m;
+//                mov = m;
+                return m;
             }
         }
 
-        return mov;
+        return null;
     }
 
     public Director getDirector(String name){
@@ -75,8 +76,8 @@ public class MovieService {
         return movieList;
     }
 
-    public String deleteMoviesViaDirectorName(Director d){
-        List<Movie> movieList1 = movieRepository.deleteMoviesViaDirector(d.getDirectorName());
+    public String deleteMoviesViaDirectorName(String name){
+        List<Movie> movieList1 = movieRepository.deleteMoviesViaDirector(name);
         for (Movie m : movieList1){
             movieList.remove(m);
         }
@@ -86,9 +87,12 @@ public class MovieService {
 
     public String deleteAllDirectors(){
         List<Movie> l = movieRepository.deleteAllRecords();
-        for (Movie m : l){
-            movieList.remove(m);
+        for (int i=0;i<l.size();i++){
+            movieList.remove(l.get(i));
         }
+//        for (Movie m : l){
+//            movieList.remove(m);
+//        }
 
         directorList.clear();
         return "Success";

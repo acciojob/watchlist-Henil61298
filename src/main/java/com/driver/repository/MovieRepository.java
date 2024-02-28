@@ -13,11 +13,11 @@ import java.util.List;
 public class MovieRepository {
     static HashMap<Movie, Director> map = new HashMap<>();
 
-    static {
-        map.put(new Movie("Avengers"), new Director("Mahatma Gandhi"));
-        map.put(new Movie("Aven"), new Director("Mahatma"));
-        map.put(new Movie("A"), new Director("Maha"));
-    }
+//    static {
+//        map.put(new Movie("Avengers"), new Director("Mahatma Gandhi"));
+//        map.put(new Movie("Aven"), new Director("Mahatma"));
+//        map.put(new Movie("A"), new Director("Maha"));
+//    }
     public String pairDirectorMovie(List<Movie> movieList, List<Director> directorList, DirectorMoviePair dm){
         String movieName = dm.getMovieName();
         String directorName = dm.getDirectorName();

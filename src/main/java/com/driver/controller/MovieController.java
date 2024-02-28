@@ -53,37 +53,37 @@ public class MovieController {
     }
 
     @GetMapping("/get-movies-by-director-name/{director}")
-    public ResponseEntity getMoviesByDirector(@PathVariable String name){
+    public ResponseEntity getMoviesByDirector(@PathVariable("director") String name){
         return new ResponseEntity<>(movieService.getMovieListViaDirector(name), HttpStatus.OK);
     }
 
-    @GetMapping("/movies/get-all-movies")
+    @GetMapping("/get-all-movies")
     public ResponseEntity getMovieList(){
         return new ResponseEntity<>(movieService.getMovieList(), HttpStatus.OK);
     }
 
-    @DeleteMapping("/delete-director-by-name")
-    public ResponseEntity deleteDirector(@RequestBody Director d){
-        return new ResponseEntity<>(movieService.deleteMoviesViaDirectorName(d), HttpStatus.OK);
+    @DeleteMapping("/delete-director-by-name/{name}")
+    public ResponseEntity deleteDirector(@PathVariable String name){
+        return new ResponseEntity<>(movieService.deleteMoviesViaDirectorName(name), HttpStatus.OK);
     }
 
-    @DeleteMapping("/movies/delete-all-directors")
+    @DeleteMapping("/delete-all-directors")
     public ResponseEntity deleteAllDirectors(){
         return new ResponseEntity<>(movieService.deleteAllDirectors(), HttpStatus.OK);
     }
 
-    @GetMapping("/hello/{name}")
-    public String printName(@PathVariable String name){
-        return "Hello " + name;
-    }
+//    @GetMapping("/hello/{name}")
+//    public String printName(@PathVariable String name){
+//        return "Hello " + name;
+//    }
 
-    @GetMapping("/get-movies")
-    public String getSomething(){
-        return "Hello there!";
-    }
-
-    @GetMapping("/get-movie")
-    public ResponseEntity getMovie(@RequestParam("movieName") String name){
-        return new ResponseEntity(movieService.getMovie(name), HttpStatus.OK);
-    }
+//    @GetMapping("/get-movies")
+//    public String getSomething(){
+//        return "Hello there!";
+//    }
+//
+//    @GetMapping("/get-movie")
+//    public ResponseEntity getMovie(@RequestParam("movieName") String name){
+//        return new ResponseEntity(movieService.getMovie(name), HttpStatus.OK);
+//    }
 }
