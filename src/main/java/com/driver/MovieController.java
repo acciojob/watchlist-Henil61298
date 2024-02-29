@@ -1,9 +1,5 @@
 package com.driver;
 
-import com.driver.Director;
-import com.driver.model.DirectorMoviePair;
-import com.driver.Movie;
-import com.driver.service.MovieService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -31,7 +27,7 @@ public class MovieController {
     }
 
     @PutMapping("/add-movie-director-pair")
-    public ResponseEntity addPair(@RequestParam("movieName") String movieName, @RequestParam("dirName") String dirName){
+    public ResponseEntity addMovieDirectorPair(@RequestParam("movieName") String movieName, @RequestParam("dirName") String dirName){
         movieService.addPair(movieName, dirName);
         return new ResponseEntity<>("Director Movie Pair added successfully!", HttpStatus.OK);
     }
@@ -49,17 +45,17 @@ public class MovieController {
     }
 
     @GetMapping("/get-movies-by-director-name/{director}")
-    public ResponseEntity getMoviesByDirector(@PathVariable("director") String name){
+    public ResponseEntity getMoviesByDirectorName(@PathVariable("director") String name){
         return new ResponseEntity<>(movieService.getMovieListViaDirector(name), HttpStatus.OK);
     }
 
     @GetMapping("/get-all-movies")
-    public ResponseEntity getMovieList(){
+    public ResponseEntity findAllMovies(){
         return new ResponseEntity<>(movieService.getMovieList(), HttpStatus.OK);
     }
 
     @DeleteMapping("/delete-director-by-name/{name}")
-    public ResponseEntity deleteDirector(@PathVariable("name") String name){
+    public ResponseEntity deleteDirectorByName(@PathVariable("name") String name){
         return new ResponseEntity<>(movieService.deleteMoviesViaDirectorName(name), HttpStatus.OK);
     }
 

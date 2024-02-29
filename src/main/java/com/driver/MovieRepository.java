@@ -1,7 +1,6 @@
-package com.driver.repository;
+package com.driver;
 
 import com.driver.Director;
-import com.driver.model.DirectorMoviePair;
 import com.driver.Movie;
 import org.springframework.stereotype.Repository;
 
