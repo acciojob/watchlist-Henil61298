@@ -1,4 +1,4 @@
-package com.driver.controller;
+package com.driver;
 
 import com.driver.Director;
 import com.driver.model.DirectorMoviePair;
@@ -31,8 +31,8 @@ public class MovieController {
     }
 
     @PutMapping("/add-movie-director-pair")
-    public ResponseEntity addPair(@RequestBody DirectorMoviePair dm){
-        movieService.addPair(dm);
+    public ResponseEntity addPair(@RequestParam("movieName") String movieName, @RequestParam("dirName") String dirName){
+        movieService.addPair(movieName, dirName);
         return new ResponseEntity<>("Director Movie Pair added successfully!", HttpStatus.OK);
     }
 
@@ -59,7 +59,7 @@ public class MovieController {
     }
 
     @DeleteMapping("/delete-director-by-name/{name}")
-    public ResponseEntity deleteDirector(@PathVariable String name){
+    public ResponseEntity deleteDirector(@PathVariable("name") String name){
         return new ResponseEntity<>(movieService.deleteMoviesViaDirectorName(name), HttpStatus.OK);
     }
 

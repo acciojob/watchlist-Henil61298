@@ -17,14 +17,14 @@ public class MovieService {
     static List<Director> directorList = new ArrayList<>();
     MovieRepository movieRepository = new MovieRepository();
 
-    static {
-        movieList.add(new Movie("Avengers"));
-        movieList.add(new Movie("KGF"));
-        movieList.add(new Movie("Sonu ke Titu ki Sweety"));
-        directorList.add(new Director("Ravindranath Tagore"));
-        directorList.add(new Director("Mahatma Gandhi"));
-        directorList.add(new Director("Doraemon"));
-    }
+//    static {
+//        movieList.add(new Movie("Avengers"));
+//        movieList.add(new Movie("KGF"));
+//        movieList.add(new Movie("Sonu ke Titu ki Sweety"));
+//        directorList.add(new Director("Ravindranath Tagore"));
+//        directorList.add(new Director("Mahatma Gandhi"));
+//        directorList.add(new Director("Doraemon"));
+//    }
 
     public String addMovie(Movie m){
         if (!movieList.contains(m)){
@@ -38,18 +38,18 @@ public class MovieService {
         if (directorList.contains(d)){
             return "Present";
         }
-        directorList.add(director);
+        directorList.add(d);
         return "Success";
     }
 
-    public String addPair(DirectorMoviePair d){
-        return movieRepository.pairDirectorMovie(movieList, directorList, d);
+    public String addPair(String movieName, String directorName){
+        return movieRepository.pairDirectorMovie(movieList, directorList, movieName, directorName);
     }
 
     public Movie getMovie(String name){
 //        Movie mov = new Movie();
         for (Movie m : movieList){
-            if (m.getMovieName().equals(name)){
+            if (m.getName().equals(name)){
 //                mov = m;
                 return m;
             }
@@ -59,13 +59,14 @@ public class MovieService {
     }
 
     public Director getDirector(String name){
+        Director d1 = null;
         for (Director d : directorList){
-            if (d.getDirectorName().equals(name)){
-                return d;
+            if (d.getName().equals(name)){
+                d1 = d;
             }
         }
 
-        return null;
+        return d1;
     }
 
     public List<Movie> getMovieListViaDirector(String name){

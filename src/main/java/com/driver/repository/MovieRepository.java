@@ -18,36 +18,33 @@ public class MovieRepository {
 //        map.put(new Movie("Aven"), new Director("Mahatma"));
 //        map.put(new Movie("A"), new Director("Maha"));
 //    }
-    public String pairDirectorMovie(List<Movie> movieList, List<Director> directorList, DirectorMoviePair dm){
-        String movieName = dm.getMovieName();
-        String directorName = dm.getDirectorName();
-        Movie movie1 = null;
-        Director director1 = null;
-
+    public String pairDirectorMovie(List<Movie> movieList, List<Director> directorList, String movieName,
+                                    String directorName){
+        Movie m1 = null;
+        Director d1 = null;
         for (Movie m : movieList){
-            if (m.getMovieName().equals(movieName)){
-                movie1 = m;
+            if (m.getName().equals(movieName)){
+                m1 = m;
             }
         }
 
         for (Director d : directorList){
-            if (d.getDirectorName().equals(directorName)){
-                director1 = d;
+            if (d.getName().equals(directorName)){
+                d1 = d;
             }
         }
 
-        if (movie1 != null && director1 != null){
-            map.put(movie1, director1);
-            return "Success";
+        if (m1 != null && d1 != null){
+            map.put(m1, d1);
         }
 
-        return "Not success";
+        return "Success";
     }
 
     public List<Movie> getMovieListViaDirector(String name){
         List<Movie> ans = new ArrayList<>();
         for (Movie m : map.keySet()){
-            if (map.get(m).getDirectorName().equals(name)){
+            if (map.get(m).getName().equals(name)){
                 ans.add(m);
             }
         }
@@ -58,7 +55,8 @@ public class MovieRepository {
     public List<Movie> deleteMoviesViaDirector(String name){
         List<Movie> movieList = new ArrayList<>();
         for (Movie m : map.keySet()){
-            if (map.get(m).getDirectorName().equals(name)){
+            System.out.println(map.get(m).getName());
+            if (map.get(m).getName().equals(name)){
                 movieList.add(m);
                 map.remove(m);
             }
